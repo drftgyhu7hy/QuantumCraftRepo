@@ -1,17 +1,13 @@
-// Fund Alice and sponsor accounts
-await aptos.fundAccount({
-  accountAddress: aliceAddress,
-  amount: ALICE_INITIAL_BALANCE,
-});
-await aptos.fundAccount({
-  accountAddress: sponsorAddress,
-  amount: SPONSOR_INITIAL_BALANCE,
-});
-
-// Show account balances
-const aliceBalanceBefore = await aptos.getAccountCoinsData({
-  accountAddress: aliceAddress,
-});
-const sponsorBalanceBefore = await aptos.getAccountCoinsData({
-  accountAddress: sponsorAddress,
-});
+function lengthOfLongestSubstring(s) {
+  const map = new Map();
+  let maxLength = 0;
+  let left = 0;
+  for (let right = 0; right < s.length; right++) {
+    if (map.has(s[right])) {
+      left = Math.max(left, map.get(s[right]) + 1);
+    }
+    map.set(s[right], right);
+    maxLength = Math.max(maxLength, right - left + 1);
+  }
+  return maxLength;
+}
